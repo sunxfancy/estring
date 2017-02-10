@@ -1,0 +1,12 @@
+build/
+build-doc/
+__pycache__/
+*.pyc
+CMakeFiles/
+bin/
+lib/
+libcharsetdetect/
+*.cmake
+CMakeCache.txt
+conaninfo.txt
+Makefile
