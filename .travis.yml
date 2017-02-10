@@ -6,7 +6,7 @@ language: python
 env:
   global:
     - CONAN_UPLOAD=1
-    - CONAN_REFERENCE="libcharsetdetect/1.0"
+    - CONAN_REFERENCE="estring/1.0"
     - CONAN_USERNAME="sunxfancy"
     - CONAN_CHANNEL="testing"
     - CONAN_TOTAL_PAGES=1

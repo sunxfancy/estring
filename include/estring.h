@@ -1,4 +1,4 @@
-/* 
+/*
 * @Author: sxf
 * @Date:   2015-12-15 09:43:18
 * @Last Modified by:   sxf
@@ -58,10 +58,10 @@ public:
 
 	/**
 	 * @brief 返回一个子串, 从begin开始, 数size个
-	 * 
+	 *
 	 * @param begin 开始位置
 	 * @param size 子串长度
-	 * 
+	 *
 	 * @return 子串的estring对象
 	 */
 	estring substr(int begin, int size);
