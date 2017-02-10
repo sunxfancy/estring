@@ -1,5 +1,5 @@
-﻿cmake_minimum_required(VERSION 2.8)
-project("proj")
+﻿cmake_minimum_required(VERSION 3.1)
+project("estring")
 
 if(EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/build/conanbuildinfo.cmake)
     include(${CMAKE_CURRENT_SOURCE_DIR}/build/conanbuildinfo.cmake)
@@ -20,38 +20,24 @@ set( CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin )
 set( CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
 set( CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib )
 
-
+set( CMAKE_CXX_STANDARD 11)
 
 file(GLOB_RECURSE source_files
         ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp
     )
-list(REMOVE_ITEM  source_files  ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
-
 
 # 生成动态库目标
-add_library(${PROJECT_NAME} SHARED ${source_files})
-# 生成静态库目标
-add_library(${PROJECT_NAME}_static STATIC ${source_files})
+add_library(${PROJECT_NAME} ${source_files})
 
-add_executable(${PROJECT_NAME}_run ${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp)
-target_link_libraries(${PROJECT_NAME}_run ${PROJECT_NAME})
-
-
-# 指定静态库的输出名称
-set_target_properties(${PROJECT_NAME}_static PROPERTIES OUTPUT_NAME "${PROJECT_NAME}")
-
-# 指定可执行文件的输出名称
-set_target_properties(${PROJECT_NAME}_run PROPERTIES OUTPUT_NAME "${PROJECT_NAME}")
-
-# 使动态库和静态库同时存在
-set_target_properties(${PROJECT_NAME} PROPERTIES CLEAN_DIRECT_OUTPUT 1)
-set_target_properties(${PROJECT_NAME}_static PROPERTIES CLEAN_DIRECT_OUTPUT 1)
+# 链接动态库
+target_link_libraries(${PROJECT_NAME} ${CONAN_LIBS})
 
 # 指定动态库版本
 # VERSION 动态库版本
 # SOVERSION API版本
+if (BUILD_SHARED_LIBS)
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH} SOVERSION ${VERSION_MAJOR})
+endif()
 
-
-add_subdirectory(doc)
+# add_subdirectory(doc)
 add_subdirectory(test)

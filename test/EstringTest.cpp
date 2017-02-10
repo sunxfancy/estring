@@ -70,7 +70,6 @@ __ESTRING_TEST__(Enter)
         ++i;
     }
     estring substr = str.substr(19, i-19); // 注意, substr的第二个参数需要的是长度, 而不是到哪里
-    printf("%s\n",substr.to_utf8().c_str());
     estring ans = "这里稍稍有点问题so, I";
     EXPECT_EQ(substr==ans, true);
 }
