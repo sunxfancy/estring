@@ -4,4 +4,4 @@
 estring
 ===============
 
-
+It's a string class which can decode text with char sets auto-detector.
