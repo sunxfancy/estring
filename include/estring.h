@@ -7,7 +7,7 @@
 #ifndef ESTRING_H
 #define ESTRING_H
 
-#include <cstdint>
+#include <stdint.h>
 #include <cstddef>
 #include <string>
 #include <vector>
@@ -22,7 +22,8 @@ class estring
 {
 public:
 	typedef std::basic_string<echar_t>::iterator iterator;
-
+	typedef std::basic_string<echar_t>::const_iterator const_iterator;
+	
 	estring();
 	estring(const std::string& str);
 	estring(const estring& estr);

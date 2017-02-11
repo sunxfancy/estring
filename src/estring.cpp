@@ -1,4 +1,4 @@
-/* 
+/*
 * @Author: sxf
 * @Date:   2015-12-15 10:46:34
 * @Last Modified by:   sxf
@@ -61,7 +61,7 @@ const estring& estring::operator= (const std::string& str) {
 const estring& estring::operator= (const char* cstr) {
 	autoreadstr(cstr);
 	return *this;
-}	
+}
 
 const estring& estring::operator= (const echar_t* ecstr) {
 	this->data = ecstr;
@@ -96,10 +96,10 @@ void estring::readstr (const std::string& str,  const std::string& encode) {
 void estring::readstr (const char* data,  const std::string& encode) {
 	assert (data != NULL);
 	iconv_t cd = iconv_open ("UTF-16LE", encode.c_str()); // tocode, fromcode
-	if ((iconv_t)-1 == cd) { 
+	if ((iconv_t)-1 == cd) {
 		printf("不能从编码 %s 转换到 %s！\n", encode.c_str(), "UTF-16LE");
-		return; 
-	} 
+		return;
+	}
 	size_t in_size = strlen(data);
 	size_t out_size = BUFFER_SIZE;
 	size_t malloc_size = out_size;
@@ -121,7 +121,7 @@ void estring::readstr (const char* data,  const std::string& encode) {
 			} else {
 				printf ("%s\n", strerror(errno));
 				free (outbuf);
-				return; 
+				return;
 			}
 		}
 	}
@@ -149,10 +149,10 @@ std::string estring::to_utf8() {
 
 std::string estring::to_str(const std::string& encode) {
 	iconv_t cd = iconv_open (encode.c_str(), "UTF-16LE"); // tocode, fromcode
-	if ((iconv_t)-1 == cd) { 
+	if ((iconv_t)-1 == cd) {
 		printf("不能从编码 %s 转换到 %s！\n", encode.c_str(), "UTF-16LE");
-		return ""; 
-	} 
+		return "";
+	}
 	std::string _ToStr;
 	char* data = (char*)(this->data.data());
 	size_t in_size = this->data.size() * 2;
@@ -175,7 +175,7 @@ std::string estring::to_str(const std::string& encode) {
 			} else {
 				printf ("%s\n", strerror(errno));
 				free (outbuf);
-				return _ToStr = ""; 
+				return _ToStr = "";
 			}
 		}
 	}
@@ -190,10 +190,8 @@ std::string estring::to_str(const std::string& encode) {
 
 
 int estring::find(echar_t c) const {
-	int i = 0;
-	for (auto p : data) {
-		if (p == c) return i;
-		++i; 
+	for (const_iterator p = data.begin(); p != data.end(); ++p) {
+		if (*p == c) return p - data.begin();
 	}
 	return -1;
 }
@@ -230,17 +228,17 @@ estring::encodedetect (const char* data) {
 
     int size = strlen(data);
     int result = csd_consider(csd, data, size);
-    if (result < 0) 
+    if (result < 0)
         return NULL;
     return csd_close(csd);
 }
 
-std::string 
+std::string
 estring::load_full_file(const std::string& path) {
-	std::ifstream t(path);
+	std::ifstream t(path.c_str());
 	std::string str;
 
-	t.seekg(0, std::ios::end);   
+	t.seekg(0, std::ios::end);
 	str.reserve(t.tellg());
 	t.seekg(0, std::ios::beg);
 
