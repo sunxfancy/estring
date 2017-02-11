@@ -12,6 +12,7 @@ class EstringConan(ConanFile):
     requires = "libiconv/1.14@lasote/stable", "libcharsetdetect/1.0@sunxfancy/stable", "gtest/1.8.0@lasote/stable"
     default_options = "shared=False"
     generators = "cmake"
+    build_policy = "missing"
     exports_sources = "*"
 
     def build(self):
