@@ -7,7 +7,7 @@ username = os.getenv("CONAN_USERNAME", "sunxfancy")
 
 class HelloReuseConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    requires = "estring/1.0@%s/%s" % (username, channel)
+    requires = "estring/1.1@%s/%s" % (username, channel)
     generators = "cmake"
     build_policy = "missing"
 
