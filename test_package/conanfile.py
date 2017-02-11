@@ -9,6 +9,7 @@ class HelloReuseConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     requires = "estring/1.0@%s/%s" % (username, channel)
     generators = "cmake"
+    build_policy = "missing"
 
     def build(self):
         cmake = CMake(self.settings)
