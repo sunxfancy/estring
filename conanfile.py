@@ -21,6 +21,10 @@ class EstringConan(ConanFile):
         self.run('cmake %s %s %s' % (self.conanfile_directory, cmake.command_line, shared))
         self.run("cmake --build . %s" % cmake.build_config)
 
+    def imports(self):
+        self.copy(pattern="*.dll", dst="bin", src="bin")
+        self.copy(pattern="*.dylib", dst="bin", src="lib")
+
     def package(self):
         self.copy("*.h", dst="include", src="include")
         self.copy("*.a", dst="lib", src="lib", keep_path=False)
