@@ -8,7 +8,7 @@ else()
 endif()
 conan_basic_setup()
 
-SET(VERSION_MAJOR "0")
+SET(VERSION_MAJOR "1")
 SET(VERSION_MINOR "1")
 SET(VERSION_PATCH "0")
 
@@ -39,5 +39,5 @@ if (BUILD_SHARED_LIBS)
 set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${VERSION_MAJOR}.${VERSION_MINOR}.${VERSION_PATCH} SOVERSION ${VERSION_MAJOR})
 endif()
 
-# add_subdirectory(doc)
+add_subdirectory(doc)
 add_subdirectory(test)

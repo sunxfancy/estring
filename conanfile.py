@@ -4,7 +4,7 @@ import os
 
 class EstringConan(ConanFile):
     name = "estring"
-    version = "1.0"
+    version = "1.1"
     license = "MIT"
     url = "https://github.com/sunxfancy/estring"
     settings = "os", "compiler", "build_type", "arch"
