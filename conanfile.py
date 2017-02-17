@@ -9,7 +9,7 @@ class EstringConan(ConanFile):
     url = "https://github.com/sunxfancy/estring"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
-    requires = "libiconv/1.14@lasote/stable", "libcharsetdetect/1.0@sunxfancy/stable", "gtest/1.8.0@lasote/stable"
+    requires = "libiconv/1.14@sunxfancy/stable", "libcharsetdetect/1.0@sunxfancy/stable", "gtest/1.8.0@lasote/stable"
     default_options = "shared=False", "gtest:shared=False"
     generators = "cmake"
     build_policy = "missing"
