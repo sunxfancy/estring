@@ -7,6 +7,7 @@
 
 #include "estring.h"
 extern "C" {
+#define ICONV_CONST 
 #include "iconv.h"
 #include "charsetdetect.h"
 }
