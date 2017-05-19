@@ -4,7 +4,7 @@ import os
 
 class EstringConan(ConanFile):
     name = "estring"
-    version = "1.2"
+    version = "1.2.1"
     license = "MIT"
     url = "https://github.com/sunxfancy/estring"
     settings = "os", "compiler", "build_type", "arch"
@@ -23,12 +23,14 @@ class EstringConan(ConanFile):
 
     def imports(self):
         self.copy(pattern="*.dll", dst="bin", src="bin")
+        self.copy(pattern="*.so*", dst="bin", src="lib")
         self.copy(pattern="*.dylib", dst="bin", src="lib")
 
     def package(self):
         self.copy("*.h", dst="include", src="include")
         self.copy("*.a", dst="lib", src="lib", keep_path=False)
         self.copy("*.lib", dst="lib", src="lib", keep_path=False)
+        self.copy("*.dll", dst="bin", src="bin", keep_path=False)
         self.copy("*.dll", dst="bin", src="lib", keep_path=False)
         self.copy("*.so*", dst="lib", src="lib", keep_path=False)
         self.copy("*.dylib", dst="lib", src="lib", keep_path=False)

@@ -38,4 +38,4 @@ set_target_properties(${PROJECT_NAME} PROPERTIES VERSION ${VERSION_MAJOR}.${VERS
 endif()
 
 add_subdirectory(doc)
-add_subdirectory(test)
+# add_subdirectory(test)
