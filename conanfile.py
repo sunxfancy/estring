@@ -4,12 +4,12 @@ import os
 
 class EstringConan(ConanFile):
     name = "estring"
-    version = "1.2.1"
+    version = "1.2.2"
     license = "MIT"
     url = "https://github.com/sunxfancy/estring"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
-    requires = "libiconv/1.14@sunxfancy/stable", "libcharsetdetect/1.0@sunxfancy/stable", "gtest/1.8.0@lasote/stable"
+    requires = "libiconv/1.14.2@sunxfancy/stable", "libcharsetdetect/1.0@sunxfancy/stable", "gtest/1.8.0@lasote/stable"
     default_options = "shared=False", "gtest:shared=False"
     generators = "cmake"
     build_policy = "missing"
