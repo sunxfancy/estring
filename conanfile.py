@@ -16,7 +16,7 @@ class EstringConan(ConanFile):
     exports_sources = "*"
 
     def build(self):
-        cmake = CMake(self.settings)
+        cmake = CMake(self)
         shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
         self.run('cmake %s %s %s' % (self.conanfile_directory, cmake.command_line, shared))
         self.run("cmake --build . %s" % cmake.build_config)
