@@ -5,6 +5,7 @@ __pycache__/
 CMakeFiles/
 bin/
 lib/
+.vscode/
 libcharsetdetect/
 *.cmake
 CMakeCache.txt
