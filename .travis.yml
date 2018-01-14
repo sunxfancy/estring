@@ -1,6 +1,6 @@
 env:
    global:
-     - CONAN_REFERENCE: "estring/1.2.2"
+     - CONAN_REFERENCE: "estring/1.2.3"
      - CONAN_USERNAME: "sunxfancy"
      - CONAN_LOGIN_USERNAME: "sunxfancy"
      - CONAN_CHANNEL: "ci"
