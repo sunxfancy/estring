@@ -4,12 +4,12 @@ import os
 
 class EstringConan(ConanFile):
     name = "estring"
-    version = "1.2.2"
+    version = "1.2.3"
     license = "MIT"
     url = "https://github.com/sunxfancy/estring"
     settings = "os", "compiler", "build_type", "arch"
     options = {"shared": [True, False]}
-    requires = "libiconv/1.14.3@sunxfancy/stable", "libcharsetdetect/1.1.1@sunxfancy/stable", "gtest/1.8.0@lasote/stable"
+    requires = "libiconv/1.14.4@sunxfancy/stable", "libcharsetdetect/1.1.2@sunxfancy/stable", "gtest/1.8.0@lasote/stable"
     default_options = "shared=False", "gtest:shared=False"
     generators = "cmake"
     build_policy = "missing"
@@ -18,8 +18,8 @@ class EstringConan(ConanFile):
     def build(self):
         cmake = CMake(self)
         shared = "-DBUILD_SHARED_LIBS=ON" if self.options.shared else ""
-        self.run('cmake %s %s %s' % (self.conanfile_directory, cmake.command_line, shared))
-        self.run("cmake --build . %s" % cmake.build_config)
+        cmake.configure(shared)
+        cmake.build()
 
     def imports(self):
         self.copy(pattern="*.dll", dst="bin", src="bin")
